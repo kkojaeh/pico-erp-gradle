@@ -1,3 +1,4 @@
+ext.springBootVersion = '1.5.14.RELEASE'
 ext {
   springBootVersion = '1.5.14.RELEASE'
   gradleAptPluginVersion = '0.15'
@@ -28,8 +29,8 @@ buildscript {
     }
   }
   dependencies {
-    classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.14.RELEASE")
-    classpath("net.ltgt.gradle:gradle-apt-plugin:0.15")
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    classpath("net.ltgt.gradle:gradle-apt-plugin:${gradleAptPluginVersion}")
     classpath("com.bmuschko:gradle-clover-plugin:${cloverPluginVersion}")
     classpath("io.spring.gradle:dependency-management-plugin:${dependencyManagementPluginVersion}")
     classpath("net.researchgate:gradle-release:${gradleReleaseVersion}")
