@@ -5,7 +5,6 @@ ext {
   gradleReleaseVersion = '2.6.0'
   platformBomVersion = 'Brussels-SR6'
   awsJavaSdkBomVersion = '1.11.331'
-  hibernate.version = '5.2.12.Final'
   lombokVersion = '1.16.20'
   spockVersion = '1.1-groovy-2.4'
   groovyVersion = '2.4.4'
@@ -17,6 +16,7 @@ ext {
   xceliteVersion = '1.0.4'
   mapstructVersion = '1.2.0.Final'
 }
+ext['hibernate.version'] = '5.2.12.Final'
 
 buildscript {
   repositories {
