@@ -1,0 +1,152 @@
+buildscript {
+  repositories {
+    mavenCentral()
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    classpath("net.ltgt.gradle:gradle-apt-plugin:${gradleAptPluginVersion}")
+    classpath("com.bmuschko:gradle-clover-plugin:${cloverPluginVersion}")
+    classpath("io.spring.gradle:dependency-management-plugin:${dependencyManagementPluginVersion}")
+    classpath("net.researchgate:gradle-release:${gradleReleaseVersion}")
+    classpath("gradle.plugin.io.github.divinespear:jpa-schema-gradle-plugin:${jpaSchemaGenerateVersion}")
+  }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'net.researchgate.release'
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: "net.ltgt.apt"
+apply plugin: 'net.ltgt.apt-idea'
+
+sourceCompatibility = 1.8
+
+dependencyManagement {
+  imports {
+    mavenBom "com.amazonaws:aws-java-sdk-bom:${awsJavaSdkBomVersion}"
+    mavenBom "io.spring.platform:platform-bom:${platformBomVersion}"
+  }
+}
+
+compileJava {
+  options.compilerArgs = [
+          '-Amapstruct.suppressGeneratorTimestamp=true',
+          '-Amapstruct.suppressGeneratorVersionInfoComment=true',
+          '-Amapstruct.defaultComponentModel=spring'
+  ]
+  aptOptions.annotationProcessing = true
+  aptOptions.processors = [
+          'lombok.launch.AnnotationProcessorHider$AnnotationProcessor',
+          'com.querydsl.apt.jpa.JPAAnnotationProcessor',
+          'org.mapstruct.ap.MappingProcessor']
+}
+
+compileTestJava {
+  options.compilerArgs = [
+          '-Amapstruct.suppressGeneratorTimestamp=true',
+          '-Amapstruct.suppressGeneratorVersionInfoComment=true',
+          '-Amapstruct.defaultComponentModel=spring'
+  ]
+  aptOptions.annotationProcessing = true
+  aptOptions.processors = [
+          'lombok.launch.AnnotationProcessorHider$AnnotationProcessor',
+          'com.querydsl.apt.jpa.JPAAnnotationProcessor',
+          'org.mapstruct.ap.MappingProcessor']
+}
+
+compileGroovy {
+  groovyOptions.javaAnnotationProcessing = true
+}
+
+compileTestGroovy {
+  groovyOptions.javaAnnotationProcessing = true
+}
+
+dependencies {
+
+  // 소스코드 간편화
+  annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
+  testCompileOnly("org.projectlombok:lombok:${lombokVersion}")
+  compileOnly("org.projectlombok:lombok:${lombokVersion}")
+
+  compile("org.mapstruct:mapstruct:${mapstructVersion}")
+  compile("org.mapstruct:mapstruct-jdk8:${mapstructVersion}")
+
+  compileOnly("org.mapstruct:mapstruct-processor:${mapstructVersion}")
+  testCompileOnly("org.mapstruct:mapstruct-processor:${mapstructVersion}")
+  annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
+  annotationProcessor('com.querydsl:querydsl-apt')
+  annotationProcessor('org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final')
+  compileOnly("com.querydsl:querydsl-apt")
+  testCompileOnly("com.querydsl:querydsl-apt")
+
+  // 아이디 지정
+  compile('org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final')
+
+  // 페이징 등의 컬렉션 등을 사용
+  compile('org.springframework.data:spring-data-commons')
+
+  // 유효성 체크 API
+  compile('javax.validation:validation-api')
+
+  // 에러코드 지정으로 사용
+  compile('org.springframework:spring-web')
+
+  // mysql
+  runtime('mysql:mysql-connector-java')
+}
+
+idea {
+
+  module {
+    outputDir file('build/classes/main')
+    testOutputDir file('build/classes/test')
+    apt {
+      // whether generated sources dirs are added as generated sources root
+      addGeneratedSourcesDirs = true
+      // whether the apt and testApt dependencies are added as module dependencies
+      addAptDependencies = false
+
+      // The following are mostly internal details; you shouldn't ever need to configure them.
+      // whether the compileOnly and testCompileOnly dependencies are added as module dependencies
+      addCompileOnlyDependencies = false // defaults to true in Gradle < 2.12
+      // the dependency scope used for apt and/or compileOnly dependencies (when enabled above)
+      mainDependenciesScope = "COMPILE"
+      // defaults to "COMPILE" in Gradle < 3.4, or when using the Gradle integration in IntelliJ IDEA
+    }
+  }
+}
+
+release {
+  failOnCommitNeeded = false
+  failOnPublishNeeded = true
+  failOnSnapshotDependencies = true
+  failOnUnversionedFiles = true
+  failOnUpdateNeeded = true
+  revertOnFail = true
+  preCommitText = ''
+  preTagCommitMessage = '[Gradle Release Plugin] - pre tag commit: '
+  tagCommitMessage = '[Gradle Release Plugin] - creating tag: '
+  newVersionCommitMessage = '[Gradle Release Plugin] - new version commit: '
+  tagTemplate = '${version}'
+  versionPropertyFile = 'gradle.properties'
+  versionProperties = []
+  buildTasks = ['build']
+  scmAdapters = [
+    net.researchgate.release.GitAdapter
+  ]
+
+  git {
+    requireBranch = 'master'
+    pushToRemote = 'origin'
+    pushToBranchPrefix = ''
+    commitVersionFileOnly = false
+    //signTag = false
+  }
+
+}
