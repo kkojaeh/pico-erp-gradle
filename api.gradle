@@ -1,6 +1,4 @@
-ext.springBootVersion = '1.5.14.RELEASE'
 ext {
-  springBootVersion = '1.5.14.RELEASE'
   gradleAptPluginVersion = '0.15'
   cloverPluginVersion = '2.1.2'
   dependencyManagementPluginVersion = '1.0.3.RELEASE'
@@ -15,7 +13,6 @@ ext {
   jxlsVersion = '2.4.3'
   jxlsPoiVersion = '1.0.14'
   libphonenumberVersion = '8.9.4'
-  jpaSchemaGenerateVersion = '0.3.5.1'
   flywayVersion = '5.0.7'
   xceliteVersion = '1.0.4'
   mapstructVersion = '1.2.0.Final'
@@ -29,12 +26,11 @@ buildscript {
     }
   }
   dependencies {
-    classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-    classpath("net.ltgt.gradle:gradle-apt-plugin:${gradleAptPluginVersion}")
-    classpath("com.bmuschko:gradle-clover-plugin:${cloverPluginVersion}")
-    classpath("io.spring.gradle:dependency-management-plugin:${dependencyManagementPluginVersion}")
-    classpath("net.researchgate:gradle-release:${gradleReleaseVersion}")
-    classpath("gradle.plugin.io.github.divinespear:jpa-schema-gradle-plugin:${jpaSchemaGenerateVersion}")
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.14.RELEASE")
+    classpath("net.ltgt.gradle:gradle-apt-plugin:0.15")
+    classpath("com.bmuschko:gradle-clover-plugin:2.1.2")
+    classpath("io.spring.gradle:dependency-management-plugin:1.0.3.RELEASE")
+    classpath("net.researchgate:gradle-release:2.6.0")
   }
 }
 
