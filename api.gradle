@@ -1,10 +1,5 @@
 ext {
-    gradleAptPluginVersion = '0.15'
-    cloverPluginVersion = '2.1.2'
-    dependencyManagementPluginVersion = '1.0.3.RELEASE'
-    gradleReleaseVersion = '2.6.0'
     platformBomVersion = 'Brussels-SR6'
-    awsJavaSdkBomVersion = '1.11.331'
     lombokVersion = '1.16.20'
     spockVersion = '1.1-groovy-2.4'
     groovyVersion = '2.4.4'
@@ -22,6 +17,8 @@ ext['hibernate.version'] = '5.2.12.Final'
 
 afterEvaluate { project ->
 
+    sourceCompatibility = 1.8
+
     repositories {
         mavenCentral()
         google()
@@ -36,45 +33,26 @@ afterEvaluate { project ->
 
     dependencyManagement {
         imports {
-            mavenBom "com.amazonaws:aws-java-sdk-bom:${awsJavaSdkBomVersion}"
             mavenBom "io.spring.platform:platform-bom:${platformBomVersion}"
         }
     }
 
-    sourceCompatibility = 1.8
-
     compileJava {
         options.compilerArgs = [
-                '-Amapstruct.suppressGeneratorTimestamp=true',
-                '-Amapstruct.suppressGeneratorVersionInfoComment=true',
-                '-Amapstruct.defaultComponentModel=spring'
         ]
         aptOptions.annotationProcessing = true
         aptOptions.processors = [
                 'lombok.launch.AnnotationProcessorHider$AnnotationProcessor',
-                'com.querydsl.apt.jpa.JPAAnnotationProcessor',
-                'org.mapstruct.ap.MappingProcessor']
+                'com.querydsl.apt.jpa.JPAAnnotationProcessor']
     }
 
     compileTestJava {
         options.compilerArgs = [
-                '-Amapstruct.suppressGeneratorTimestamp=true',
-                '-Amapstruct.suppressGeneratorVersionInfoComment=true',
-                '-Amapstruct.defaultComponentModel=spring'
         ]
         aptOptions.annotationProcessing = true
         aptOptions.processors = [
                 'lombok.launch.AnnotationProcessorHider$AnnotationProcessor',
-                'com.querydsl.apt.jpa.JPAAnnotationProcessor',
-                'org.mapstruct.ap.MappingProcessor']
-    }
-
-    compileGroovy {
-        groovyOptions.javaAnnotationProcessing = true
-    }
-
-    compileTestGroovy {
-        groovyOptions.javaAnnotationProcessing = true
+                'com.querydsl.apt.jpa.JPAAnnotationProcessor']
     }
 
     dependencies {
@@ -84,12 +62,6 @@ afterEvaluate { project ->
         testCompileOnly("org.projectlombok:lombok:${lombokVersion}")
         compileOnly("org.projectlombok:lombok:${lombokVersion}")
 
-        compile("org.mapstruct:mapstruct:${mapstructVersion}")
-        compile("org.mapstruct:mapstruct-jdk8:${mapstructVersion}")
-
-        compileOnly("org.mapstruct:mapstruct-processor:${mapstructVersion}")
-        testCompileOnly("org.mapstruct:mapstruct-processor:${mapstructVersion}")
-        annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
         annotationProcessor('com.querydsl:querydsl-apt')
         annotationProcessor('org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final')
         compileOnly("com.querydsl:querydsl-apt")
@@ -107,8 +79,6 @@ afterEvaluate { project ->
         // 에러코드 지정으로 사용
         compile('org.springframework:spring-web')
 
-        // mysql
-        runtime('mysql:mysql-connector-java')
     }
 
     idea {
