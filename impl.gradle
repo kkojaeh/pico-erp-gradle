@@ -1,207 +1,187 @@
 ext {
-  gradleAptPluginVersion = '0.15'
-  cloverPluginVersion = '2.1.2'
-  dependencyManagementPluginVersion = '1.0.3.RELEASE'
-  gradleReleaseVersion = '2.6.0'
-  platformBomVersion = 'Brussels-SR6'
-  awsJavaSdkBomVersion = '1.11.331'
-  lombokVersion = '1.16.20'
-  spockVersion = '1.1-groovy-2.4'
-  groovyVersion = '2.4.4'
-  jjschemaVersion = '1.10'
-  jxlsVersion = '2.4.3'
-  jxlsPoiVersion = '1.0.14'
-  libphonenumberVersion = '8.9.4'
-  flywayVersion = '5.0.7'
-  xceliteVersion = '1.0.4'
-  mapstructVersion = '1.2.0.Final'
+    gradleAptPluginVersion = '0.15'
+    cloverPluginVersion = '2.1.2'
+    dependencyManagementPluginVersion = '1.0.3.RELEASE'
+    gradleReleaseVersion = '2.6.0'
+    platformBomVersion = 'Brussels-SR6'
+    awsJavaSdkBomVersion = '1.11.331'
+    lombokVersion = '1.16.20'
+    spockVersion = '1.1-groovy-2.4'
+    groovyVersion = '2.4.4'
+    jjschemaVersion = '1.10'
+    jxlsVersion = '2.4.3'
+    jxlsPoiVersion = '1.0.14'
+    libphonenumberVersion = '8.9.4'
+    flywayVersion = '5.0.7'
+    xceliteVersion = '1.0.4'
+    mapstructVersion = '1.2.0.Final'
 }
 ext['hibernate.version'] = '5.2.12.Final'
 
 afterEvaluate { project ->
 
-  sourceCompatibility = 1.8
+    sourceCompatibility = 1.8
 
-  repositories {
-    mavenCentral()
-    google()
-    jcenter()
-    maven {
-      url "https://jitpack.io"
+    repositories {
+        mavenCentral()
+        google()
+        jcenter()
+        maven {
+            url "https://jitpack.io"
+        }
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
-    maven {
-      url "https://plugins.gradle.org/m2/"
+
+    dependencyManagement {
+        imports {
+            mavenBom "com.amazonaws:aws-java-sdk-bom:${awsJavaSdkBomVersion}"
+            mavenBom "io.spring.platform:platform-bom:${platformBomVersion}"
+        }
     }
-  }
 
-  dependencyManagement {
-    imports {
-      mavenBom "com.amazonaws:aws-java-sdk-bom:${awsJavaSdkBomVersion}"
-      mavenBom "io.spring.platform:platform-bom:${platformBomVersion}"
+    compileJava {
+        options.compilerArgs = [
+                '-Amapstruct.suppressGeneratorTimestamp=true',
+                '-Amapstruct.suppressGeneratorVersionInfoComment=true',
+                '-Amapstruct.defaultComponentModel=spring'
+        ]
+        aptOptions.annotationProcessing = true
+        aptOptions.processors = [
+                'lombok.launch.AnnotationProcessorHider$AnnotationProcessor',
+                'com.querydsl.apt.jpa.JPAAnnotationProcessor',
+                'org.mapstruct.ap.MappingProcessor']
     }
-  }
 
-  compileJava {
-    options.compilerArgs = [
-            '-Amapstruct.suppressGeneratorTimestamp=true',
-            '-Amapstruct.suppressGeneratorVersionInfoComment=true',
-            '-Amapstruct.defaultComponentModel=spring'
-    ]
-    aptOptions.annotationProcessing = true
-    aptOptions.processors = [
-            'lombok.launch.AnnotationProcessorHider$AnnotationProcessor',
-            'com.querydsl.apt.jpa.JPAAnnotationProcessor',
-            'org.mapstruct.ap.MappingProcessor']
-  }
-
-  compileTestJava {
-    options.compilerArgs = [
-            '-Amapstruct.suppressGeneratorTimestamp=true',
-            '-Amapstruct.suppressGeneratorVersionInfoComment=true',
-            '-Amapstruct.defaultComponentModel=spring'
-    ]
-    aptOptions.annotationProcessing = true
-    aptOptions.processors = [
-            'lombok.launch.AnnotationProcessorHider$AnnotationProcessor',
-            'com.querydsl.apt.jpa.JPAAnnotationProcessor',
-            'org.mapstruct.ap.MappingProcessor']
-  }
-
-  compileGroovy {
-    groovyOptions.javaAnnotationProcessing = true
-  }
-
-  compileTestGroovy {
-    groovyOptions.javaAnnotationProcessing = true
-  }
-
-  dependencies {
-
-    // 소스코드 간편화
-    annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
-    testCompileOnly("org.projectlombok:lombok:${lombokVersion}")
-    compileOnly("org.projectlombok:lombok:${lombokVersion}")
-
-    compile("org.mapstruct:mapstruct:${mapstructVersion}")
-    compile("org.mapstruct:mapstruct-jdk8:${mapstructVersion}")
-
-    compileOnly("org.mapstruct:mapstruct-processor:${mapstructVersion}")
-    testCompileOnly("org.mapstruct:mapstruct-processor:${mapstructVersion}")
-    annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
-    annotationProcessor('com.querydsl:querydsl-apt')
-    annotationProcessor('org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final')
-    compileOnly("com.querydsl:querydsl-apt")
-    testCompileOnly("com.querydsl:querydsl-apt")
-
-    // 아이디 지정
-    compile('org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final')
-
-    // 페이징 등의 컬렉션 등을 사용
-    compile('org.springframework.data:spring-data-commons')
-
-    // 유효성 체크 API
-    compile('javax.validation:validation-api')
-
-    // 에러코드 지정으로 사용
-    compile('org.springframework:spring-web')
-
-    // mysql
-    runtime('mysql:mysql-connector-java')
-
-
-    compile('org.springframework.boot:spring-boot-starter-data-jpa') {
-      exclude group: 'org.apache.tomcat', module: 'tomcat-jdbc'
+    compileTestJava {
+        options.compilerArgs = [
+                '-Amapstruct.suppressGeneratorTimestamp=true',
+                '-Amapstruct.suppressGeneratorVersionInfoComment=true',
+                '-Amapstruct.defaultComponentModel=spring'
+        ]
+        aptOptions.annotationProcessing = true
+        aptOptions.processors = [
+                'lombok.launch.AnnotationProcessorHider$AnnotationProcessor',
+                'com.querydsl.apt.jpa.JPAAnnotationProcessor',
+                'org.mapstruct.ap.MappingProcessor']
     }
-    compile('org.springframework.boot:spring-boot-starter-validation')
-    compile('org.springframework.boot:spring-boot-starter-cache')
 
-    compile('com.zaxxer:HikariCP:2.7.6')
-
-    // 데이터베이스 로깅
-    runtime('p6spy:p6spy:3.0.0')
-
-    compile("com.googlecode.libphonenumber:libphonenumber:${libphonenumberVersion}")
-
-    // hsqldb
-    // TODO: 차후 테스트 시에만 사용하도록 함
-    compile('org.hsqldb:hsqldb:2.3.2')
-
-    // db 마이그레이션
-    compile("org.flywaydb:flyway-core:${flywayVersion}")
-
-    // jackson java 8 time support
-    compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310')
-
-    // hibernate second level cache by memcached for 5.2.x
-    runtime('com.github.mihaicostin:hibernate-l2-memcached:5.2.10.0')
-
-      // jpa sql 처리
-      compile('com.querydsl:querydsl-jpa')
-
-      // jpa api
-      compileOnly('org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final')
-
-      compile("org.jxls:jxls:${jxlsVersion}")
-
-      compile("org.jxls:jxls-poi:${jxlsPoiVersion}")
-
-      compile("com.ebay:xcelite:${xceliteVersion}")
-
-    // event 및 mqtt 사용
-    compile("org.apache.activemq:activemq-kahadb-store")
-    compile("org.apache.activemq:activemq-spring")
-    compile("org.apache.activemq:activemq-broker")
-    compile("org.springframework.boot:spring-boot-starter-activemq")
-
-    testCompile('org.springframework.boot:spring-boot-starter-test')
-    testCompile('org.springframework.security:spring-security-test')
-    testCompile("org.spockframework:spock-core:${spockVersion}") {
-      exclude module: 'groovy-all'
+    compileGroovy {
+        groovyOptions.javaAnnotationProcessing = true
     }
-    testCompile("org.spockframework:spock-spring:${spockVersion}") {
-      exclude module: 'groovy-all'
+
+    compileTestGroovy {
+        groovyOptions.javaAnnotationProcessing = true
     }
-    testCompile("org.codehaus.groovy:groovy-all:${groovyVersion}")
-    testCompile("org.hamcrest:hamcrest-core:1.3")
-    testRuntime("net.bytebuddy:byte-buddy:1.6.5")
-    testRuntime("org.objenesis:objenesis:2.5.1")
-  }
 
-  idea {
+    dependencies {
 
-    module {
-      outputDir file('build/classes/main')
-      testOutputDir file('build/classes/test')
-      apt {
-        // whether generated sources dirs are added as generated sources root
-        addGeneratedSourcesDirs = true
-        // whether the apt and testApt dependencies are added as module dependencies
-        addAptDependencies = false
+        // 소스코드 간편화
+        annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
+        testCompileOnly("org.projectlombok:lombok:${lombokVersion}")
+        compile("org.projectlombok:lombok:${lombokVersion}")
 
-        // The following are mostly internal details; you shouldn't ever need to configure them.
-        // whether the compileOnly and testCompileOnly dependencies are added as module dependencies
-        addCompileOnlyDependencies = false // defaults to true in Gradle < 2.12
-        // the dependency scope used for apt and/or compileOnly dependencies (when enabled above)
-        mainDependenciesScope = "COMPILE"
-        // defaults to "COMPILE" in Gradle < 3.4, or when using the Gradle integration in IntelliJ IDEA
-      }
+        compile("org.mapstruct:mapstruct:${mapstructVersion}")
+        compile("org.mapstruct:mapstruct-jdk8:${mapstructVersion}")
+
+        //classpath("org.mapstruct:mapstruct-processor:${mapstructVersion}")
+        compileOnly("org.mapstruct:mapstruct-processor:${mapstructVersion}")
+        testCompileOnly("org.mapstruct:mapstruct-processor:${mapstructVersion}")
+        annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
+        annotationProcessor('com.querydsl:querydsl-apt')
+        annotationProcessor('org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final')
+        compileOnly("com.querydsl:querydsl-apt")
+        testCompileOnly("com.querydsl:querydsl-apt")
+
+        // 아이디 지정
+        compile('org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final')
+
+        // 페이징 등의 컬렉션 등을 사용
+        compile('org.springframework.data:spring-data-commons')
+
+        // 유효성 체크 API
+        compile('javax.validation:validation-api')
+
+        // 에러코드 지정으로 사용
+        compile('org.springframework:spring-web')
+
+        // mysql
+        runtime('mysql:mysql-connector-java')
+
+
+        compile('org.springframework.boot:spring-boot-starter-data-jpa') {
+            exclude group: 'org.apache.tomcat', module: 'tomcat-jdbc'
+        }
+        compile('org.springframework.boot:spring-boot-starter-validation')
+        compile('org.springframework.boot:spring-boot-starter-cache')
+
+        compile('com.zaxxer:HikariCP:2.7.6')
+
+        // 데이터베이스 로깅
+        runtime('p6spy:p6spy:3.0.0')
+
+        compile("com.googlecode.libphonenumber:libphonenumber:${libphonenumberVersion}")
+
+        // hsqldb
+        // TODO: 차후 테스트 시에만 사용하도록 함
+        compile('org.hsqldb:hsqldb:2.3.2')
+
+        // db 마이그레이션
+        compile("org.flywaydb:flyway-core:${flywayVersion}")
+
+        // jackson java 8 time support
+        compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310')
+
+        // hibernate second level cache by memcached for 5.2.x
+        runtime('com.github.mihaicostin:hibernate-l2-memcached:5.2.10.0')
+
+        // jpa sql 처리
+        compile('com.querydsl:querydsl-jpa')
+
+        // jpa api
+        compileOnly('org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final')
+
+        compile("org.jxls:jxls:${jxlsVersion}")
+
+        compile("org.jxls:jxls-poi:${jxlsPoiVersion}")
+
+        compile("com.ebay:xcelite:${xceliteVersion}")
+
+        // event 및 mqtt 사용
+        compile("org.apache.activemq:activemq-kahadb-store")
+        compile("org.apache.activemq:activemq-spring")
+        compile("org.apache.activemq:activemq-broker")
+        compile("org.springframework.boot:spring-boot-starter-activemq")
+
+        testCompile('org.springframework.boot:spring-boot-starter-test')
+        testCompile('org.springframework.security:spring-security-test')
+        testCompile("org.spockframework:spock-core:${spockVersion}") {
+            exclude module: 'groovy-all'
+        }
+        testCompile("org.spockframework:spock-spring:${spockVersion}") {
+            exclude module: 'groovy-all'
+        }
+        testCompile("org.codehaus.groovy:groovy-all:${groovyVersion}")
+        testCompile("org.hamcrest:hamcrest-core:1.3")
+        testRuntime("net.bytebuddy:byte-buddy:1.6.5")
+        testRuntime("org.objenesis:objenesis:2.5.1")
     }
-  }
 
-  generateSchema {
-    format = true
-    databaseProductName = 'org.hibernate.dialect.MySQL5Dialect'
-    vendor = 'hibernate+spring'
-    packageToScan = ['pico.erp']
-    scriptAction = 'create'
-    properties = [
-            'hibernate.dialect'                 : 'org.hibernate.dialect.MySQL5InnoDBDialect',
-            // 의미 없음(문서에서는 이리 사용하라 함)
-            'hibernate.dialect.storage_engine'  : 'innodb',
-            'hibernate.physical_naming_strategy': 'org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy',
-            'hibernate.implicit_naming_strategy': 'org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy'
-    ]
-  }
+    generateSchema {
+        format = true
+        databaseProductName = 'org.hibernate.dialect.MySQL5Dialect'
+        vendor = 'hibernate+spring'
+        packageToScan = ['pico.erp']
+        scriptAction = 'create'
+        properties = [
+                'hibernate.dialect'                 : 'org.hibernate.dialect.MySQL5InnoDBDialect',
+                // 의미 없음(문서에서는 이리 사용하라 함)
+                'hibernate.dialect.storage_engine'  : 'innodb',
+                'hibernate.physical_naming_strategy': 'org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy',
+                'hibernate.implicit_naming_strategy': 'org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy'
+        ]
+    }
 
 /*
 
