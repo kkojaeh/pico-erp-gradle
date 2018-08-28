@@ -95,6 +95,9 @@ afterEvaluate { project ->
     testCompileOnly("org.mapstruct:mapstruct-processor:${mapstructVersion}")
     annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
 
+
+    compile('javax.xml.bind:jaxb-api:2.3.0')
+
     // hsqldb
     // TODO: 차후 테스트 시에만 사용하도록 함
     runtime('org.hsqldb:hsqldb:2.3.2')
