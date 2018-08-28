@@ -17,5 +17,6 @@ rootProject.buildscript.dependencies {
     classpath("com.bmuschko:gradle-clover-plugin:2.1.2")
     classpath("io.spring.gradle:dependency-management-plugin:1.0.3.RELEASE")
     classpath("net.researchgate:gradle-release:2.6.0")
+    classpath("gradle.plugin.io.github.divinespear:jpa-schema-gradle-plugin:0.3.5.1")
 
 }
