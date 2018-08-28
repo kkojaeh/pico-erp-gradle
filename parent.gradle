@@ -1,1 +1,3 @@
-// nothting
+jar {
+  enabled = false
+}
