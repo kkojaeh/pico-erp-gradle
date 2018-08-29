@@ -1,0 +1,50 @@
+ext {
+  lombokVersion = '1.18.2'
+}
+
+afterEvaluate { project ->
+
+  sourceCompatibility = 1.8
+  targetCompatibility = 1.8
+
+  repositories {
+    mavenCentral()
+    google()
+    jcenter()
+    maven {
+      url "https://jitpack.io"
+    }
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+
+
+  compileJava {
+    options.compilerArgs = [
+    ]
+    aptOptions.annotationProcessing = true
+    aptOptions.processors = ['lombok.launch.AnnotationProcessorHider$AnnotationProcessor']
+  }
+
+  compileTestJava {
+    options.compilerArgs = [
+    ]
+    aptOptions.annotationProcessing = true
+    aptOptions.processors = ['lombok.launch.AnnotationProcessorHider$AnnotationProcessor']
+  }
+
+  dependencies {
+
+    // 소스코드 간편화
+    annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
+    testCompileOnly("org.projectlombok:lombok:${lombokVersion}")
+    compileOnly("org.projectlombok:lombok:${lombokVersion}")
+
+    annotationProcessor('javax.annotation:javax.annotation-api:1.3.2')
+    testCompileOnly('javax.annotation:javax.annotation-api:1.3.2')
+    compileOnly('javax.annotation:javax.annotation-api:1.3.2')
+
+  }
+
+}
