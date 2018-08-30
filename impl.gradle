@@ -37,11 +37,11 @@ afterEvaluate { project ->
 
   repositories {
     mavenCentral()
-    google()
-    jcenter()
     maven {
       url "https://jitpack.io"
     }
+    google()
+    jcenter()
     maven {
       url "https://plugins.gradle.org/m2/"
     }
