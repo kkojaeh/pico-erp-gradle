@@ -23,7 +23,7 @@ ext {
   attachmentVersion = '1.0.0'
   bomVersion = '1.0.0'
   quotationVersion = '1.0.0'
-  orderAcceptanceVersion = '1.0.0'
+  orderAcceptanceVersion = '1.0.1'
 }
 ext['hibernate.version'] = '5.2.12.Final'
 
