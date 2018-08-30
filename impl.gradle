@@ -24,6 +24,7 @@ ext {
   attachmentVersion = '1.0.0'
   bomVersion = '1.0.0'
   quotationVersion = '1.0.0'
+  orderAcceptanceVersion = '1.0.0'
 }
 ext['hibernate.version'] = '5.2.12.Final'
 
@@ -160,66 +161,4 @@ afterEvaluate { project ->
     archives sourcesJar
   }
 
-/*
-
-
-['rest-api-server'].each { name ->
-  project(name) {
-    apply plugin: 'org.springframework.boot'
-
-    dependencies {
-      compile('org.springframework.boot:spring-boot-starter-web')
-
-      // hibernate second level cache by memcached for 5.2.x
-      runtime('com.github.mihaicostin:hibernate-l2-memcached:5.2.10.0')
-    }
-
-    task "aws-elasticbeanstalk-artifact"(type: Zip) {
-      doFirst {
-        copy {
-          from "${parent.buildDir}/.aws-elasticbeanstalk"
-          into "${buildDir}/.aws-elasticbeanstalk"
-        }
-        copy {
-          from '.aws-elasticbeanstalk'
-          into "${buildDir}/.aws-elasticbeanstalk"
-        }
-        copy {
-          from('.aws-elasticbeanstalk') {
-            include '.ebextensions/*'
-            include 'Procfile'
-          }
-          into "${buildDir}/.aws-elasticbeanstalk"
-          def props = [S3_FIREBASE_SERVICE_ACCOUNT_KEY_FILE_BUCKET: '', S3_FIREBASE_SERVICE_ACCOUNT_KEY_FILE_URL: '', S3_SCOUTER_CONF_FILE_BUCKET: '', S3_SCOUTER_CONF_FILE_URL: '', SCOUTER_OBJ_NAME: '']
-          props << project.properties
-          props << System.env
-          expand(props)
-        }
-      }
-      from "${buildDir}/.aws-elasticbeanstalk"
-      from libsDir
-      destinationDir = file("${parent.buildDir}/aws-elasticbeanstalk")
-      archiveName = "${project.name}.zip"
-    }
-
-    task "aws-lambda-artifact"(type: Zip) {
-      from "${parent.buildDir}/.aws-lambda"
-      from "${buildDir}/.aws-lambda"
-      from compileJava
-      from processResources
-      into('lib') {
-        from configurations.runtime
-      }
-      destinationDir = file("${parent.buildDir}/aws-lambda")
-      archiveName = "${project.name}.zip"
-    }
-
-  }
 }
-*/
-}
-/*
-rest api
-// mysql
-        runtime('mysql:mysql-connector-java')
-*/
