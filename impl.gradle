@@ -12,6 +12,14 @@ ext {
   groovyVersion = '2.4.4'
   jjschemaVersion = '1.10'
   mapstructVersion = '1.2.0.Final'
+  userVersion = '1.0.1'
+  companyVersion = '1.0.0'
+  commentVersion = '1.0.0'
+  auditVersion = '1.0.0'
+  itemVersion = '1.0.0'
+  workDayVersion = '1.0.0'
+  processVersion = '1.0.0'
+  projectVersion = '1.0.0'
 }
 ext['hibernate.version'] = '5.2.12.Final'
 
