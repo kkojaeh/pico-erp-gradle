@@ -20,6 +20,7 @@ ext {
   workDayVersion = '1.0.0'
   processVersion = '1.0.0'
   projectVersion = '1.0.0'
+  attachmentVersion = '1.0.0'
 }
 ext['hibernate.version'] = '5.2.12.Final'
 
