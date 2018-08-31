@@ -28,137 +28,133 @@ ext {
 }
 ext['hibernate.version'] = '5.2.12.Final'
 
-afterEvaluate { project ->
+apply plugin: 'io.spring.dependency-management'
 
-  apply plugin: 'io.spring.dependency-management'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
-  sourceCompatibility = 1.8
-  targetCompatibility = 1.8
-
-  repositories {
-    mavenCentral()
-    maven {
-      url "https://jitpack.io"
-    }
-    google()
-    jcenter()
-    maven {
-      url "https://plugins.gradle.org/m2/"
-    }
+repositories {
+  mavenCentral()
+  maven {
+    url "https://jitpack.io"
   }
-
-  compileJava {
-    options.compilerArgs = [
-      '-Amapstruct.suppressGeneratorTimestamp=true',
-      '-Amapstruct.suppressGeneratorVersionInfoComment=true',
-      '-Amapstruct.defaultComponentModel=spring'
-    ]
-    aptOptions.annotationProcessing = true
-    aptOptions.processors = [
-      'lombok.launch.AnnotationProcessorHider$AnnotationProcessor',
-      'com.querydsl.apt.jpa.JPAAnnotationProcessor',
-      'org.mapstruct.ap.MappingProcessor']
+  google()
+  jcenter()
+  maven {
+    url "https://plugins.gradle.org/m2/"
   }
+}
 
-  compileTestJava {
-    options.compilerArgs = [
-      '-Amapstruct.suppressGeneratorTimestamp=true',
-      '-Amapstruct.suppressGeneratorVersionInfoComment=true',
-      '-Amapstruct.defaultComponentModel=spring'
-    ]
-    aptOptions.annotationProcessing = true
-    aptOptions.processors = [
-      'lombok.launch.AnnotationProcessorHider$AnnotationProcessor',
-      'com.querydsl.apt.jpa.JPAAnnotationProcessor',
-      'org.mapstruct.ap.MappingProcessor']
+compileJava {
+  options.compilerArgs = [
+    '-Amapstruct.suppressGeneratorTimestamp=true',
+    '-Amapstruct.suppressGeneratorVersionInfoComment=true',
+    '-Amapstruct.defaultComponentModel=spring'
+  ]
+  aptOptions.annotationProcessing = true
+  aptOptions.processors = [
+    'lombok.launch.AnnotationProcessorHider$AnnotationProcessor',
+    'com.querydsl.apt.jpa.JPAAnnotationProcessor',
+    'org.mapstruct.ap.MappingProcessor']
+}
+
+compileTestJava {
+  options.compilerArgs = [
+    '-Amapstruct.suppressGeneratorTimestamp=true',
+    '-Amapstruct.suppressGeneratorVersionInfoComment=true',
+    '-Amapstruct.defaultComponentModel=spring'
+  ]
+  aptOptions.annotationProcessing = true
+  aptOptions.processors = [
+    'lombok.launch.AnnotationProcessorHider$AnnotationProcessor',
+    'com.querydsl.apt.jpa.JPAAnnotationProcessor',
+    'org.mapstruct.ap.MappingProcessor']
+}
+
+compileGroovy {
+  groovyOptions.javaAnnotationProcessing = true
+}
+
+compileTestGroovy {
+  groovyOptions.javaAnnotationProcessing = true
+}
+
+dependencies {
+
+  // 소스코드 간편화
+  annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
+  testCompileOnly("org.projectlombok:lombok:${lombokVersion}")
+  compileOnly("org.projectlombok:lombok:${lombokVersion}")
+
+  // JPA
+  annotationProcessor('javax.persistence:javax.persistence-api:2.2')
+  compile('javax.persistence:javax.persistence-api:2.2')
+
+  // QueryDSL
+  annotationProcessor('com.querydsl:querydsl-apt')
+  compileOnly("com.querydsl:querydsl-apt")
+  testCompileOnly("com.querydsl:querydsl-apt")
+
+  annotationProcessor('javax.annotation:javax.annotation-api:1.3.2')
+  testCompileOnly('javax.annotation:javax.annotation-api:1.3.2')
+  compileOnly('javax.annotation:javax.annotation-api:1.3.2')
+
+  compile("org.mapstruct:mapstruct:${mapstructVersion}")
+  compile("org.mapstruct:mapstruct-jdk8:${mapstructVersion}")
+
+  compileOnly("org.mapstruct:mapstruct-processor:${mapstructVersion}")
+  testCompileOnly("org.mapstruct:mapstruct-processor:${mapstructVersion}")
+  annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
+
+
+  compile('javax.xml.bind:jaxb-api:2.3.0')
+
+  // hsqldb
+  // TODO: 차후 테스트 시에만 사용하도록 함
+  runtime('org.hsqldb:hsqldb:2.3.2')
+  testRuntime('org.hsqldb:hsqldb:2.3.2')
+
+  testCompile('org.springframework.boot:spring-boot-starter-test')
+  testCompile('org.springframework.security:spring-security-test')
+  testCompile("org.spockframework:spock-core:${spockVersion}") {
+    exclude module: 'groovy-all'
   }
-
-  compileGroovy {
-    groovyOptions.javaAnnotationProcessing = true
+  testCompile("org.spockframework:spock-spring:${spockVersion}") {
+    exclude module: 'groovy-all'
   }
+  testCompile("org.codehaus.groovy:groovy-all:${groovyVersion}")
+  testCompile("org.hamcrest:hamcrest-core:1.3")
+  testRuntime("net.bytebuddy:byte-buddy:1.6.5")
+  testRuntime("org.objenesis:objenesis:2.5.1")
+}
 
-  compileTestGroovy {
-    groovyOptions.javaAnnotationProcessing = true
+generateSchema {
+  format = true
+  databaseProductName = 'org.hibernate.dialect.MySQL5Dialect'
+  vendor = 'hibernate+spring'
+  packageToScan = ['pico.erp']
+  scriptAction = 'create'
+  properties = [
+    'hibernate.dialect'                 : 'org.hibernate.dialect.MySQL5InnoDBDialect',
+    // 의미 없음(문서에서는 이리 사용하라 함)
+    'hibernate.dialect.storage_engine'  : 'innodb',
+    'hibernate.physical_naming_strategy': 'org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy',
+    'hibernate.implicit_naming_strategy': 'org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy'
+  ]
+}
+
+dependencyManagement {
+  imports {
+    mavenBom "com.amazonaws:aws-java-sdk-bom:${awsJavaSdkBomVersion}"
+    mavenBom "io.spring.platform:platform-bom:${platformBomVersion}"
   }
+}
 
-  dependencies {
+task sourcesJar(type: Jar) {
+  from sourceSets.main.java.srcDirs
+  classifier = 'sources'
+}
 
-    // 소스코드 간편화
-    annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
-    testCompileOnly("org.projectlombok:lombok:${lombokVersion}")
-    compileOnly("org.projectlombok:lombok:${lombokVersion}")
-
-    // JPA
-    annotationProcessor('javax.persistence:javax.persistence-api:2.2')
-    compile('javax.persistence:javax.persistence-api:2.2')
-
-    // QueryDSL
-    annotationProcessor('com.querydsl:querydsl-apt')
-    compileOnly("com.querydsl:querydsl-apt")
-    testCompileOnly("com.querydsl:querydsl-apt")
-
-    annotationProcessor('javax.annotation:javax.annotation-api:1.3.2')
-    testCompileOnly('javax.annotation:javax.annotation-api:1.3.2')
-    compileOnly('javax.annotation:javax.annotation-api:1.3.2')
-
-    compile("org.mapstruct:mapstruct:${mapstructVersion}")
-    compile("org.mapstruct:mapstruct-jdk8:${mapstructVersion}")
-
-    compileOnly("org.mapstruct:mapstruct-processor:${mapstructVersion}")
-    testCompileOnly("org.mapstruct:mapstruct-processor:${mapstructVersion}")
-    annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
-
-
-    compile('javax.xml.bind:jaxb-api:2.3.0')
-
-    // hsqldb
-    // TODO: 차후 테스트 시에만 사용하도록 함
-    runtime('org.hsqldb:hsqldb:2.3.2')
-    testRuntime('org.hsqldb:hsqldb:2.3.2')
-
-    testCompile('org.springframework.boot:spring-boot-starter-test')
-    testCompile('org.springframework.security:spring-security-test')
-    testCompile("org.spockframework:spock-core:${spockVersion}") {
-      exclude module: 'groovy-all'
-    }
-    testCompile("org.spockframework:spock-spring:${spockVersion}") {
-      exclude module: 'groovy-all'
-    }
-    testCompile("org.codehaus.groovy:groovy-all:${groovyVersion}")
-    testCompile("org.hamcrest:hamcrest-core:1.3")
-    testRuntime("net.bytebuddy:byte-buddy:1.6.5")
-    testRuntime("org.objenesis:objenesis:2.5.1")
-  }
-
-  generateSchema {
-    format = true
-    databaseProductName = 'org.hibernate.dialect.MySQL5Dialect'
-    vendor = 'hibernate+spring'
-    packageToScan = ['pico.erp']
-    scriptAction = 'create'
-    properties = [
-      'hibernate.dialect'                 : 'org.hibernate.dialect.MySQL5InnoDBDialect',
-      // 의미 없음(문서에서는 이리 사용하라 함)
-      'hibernate.dialect.storage_engine'  : 'innodb',
-      'hibernate.physical_naming_strategy': 'org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy',
-      'hibernate.implicit_naming_strategy': 'org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy'
-    ]
-  }
-
-  dependencyManagement {
-    imports {
-      mavenBom "com.amazonaws:aws-java-sdk-bom:${awsJavaSdkBomVersion}"
-      mavenBom "io.spring.platform:platform-bom:${platformBomVersion}"
-    }
-  }
-
-  task sourcesJar(type: Jar) {
-    from sourceSets.main.java.srcDirs
-    classifier = 'sources'
-  }
-
-  artifacts {
-    archives sourcesJar
-  }
-
+artifacts {
+  archives sourcesJar
 }
