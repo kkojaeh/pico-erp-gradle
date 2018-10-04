@@ -11,7 +11,7 @@ ext {
   flywayVersion = '5.0.7'
   xceliteVersion = '1.0.4'
   mapstructVersion = '1.2.0.Final'
-  sharedVersion = '1.0.3'
+  sharedVersion = '1.0.4'
   userVersion = '1.1.0'
   companyVersion = '1.1.0'
   commentVersion = '1.1.0'
