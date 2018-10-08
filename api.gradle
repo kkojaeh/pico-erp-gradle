@@ -16,7 +16,7 @@ ext {
   companyVersion = '1.2.0'
   commentVersion = '1.2.0'
   auditVersion = '1.1.0'
-  itemVersion = '1.1.1'
+  itemVersion = '1.2.0'
   workScheduleVersion = '1.1.5'
   processVersion = '1.1.3'
   projectVersion = '1.1.1'
