@@ -21,7 +21,7 @@ ext {
   processVersion = '1.2.0'
   projectVersion = '1.2.1'
   attachmentVersion = '1.2.0'
-  bomVersion = '1.1.1'
+  bomVersion = '1.2.0'
   quotationVersion = '1.1.1'
   orderAcceptanceVersion = '1.1.0'
   facilityVersion = '1.1.3'
