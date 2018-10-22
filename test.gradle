@@ -14,7 +14,7 @@ ext {
   mapstructVersion = '1.2.0.Final'
   sharedVersion = '1.0.6'
   userVersion = '1.2.0'
-  companyVersion = '1.2.0'
+  companyVersion = '1.2.1'
   commentVersion = '1.2.1'
   auditVersion = '1.1.0'
   itemVersion = '1.2.4'
