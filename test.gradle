@@ -29,6 +29,7 @@ ext {
   warehouseVersion = '1.2.5'
 }
 ext['hibernate.version'] = '5.2.12.Final'
+ext['jackson.version'] = '2.9.7'
 
 apply plugin: 'io.spring.dependency-management'
 
