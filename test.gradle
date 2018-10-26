@@ -12,7 +12,7 @@ ext {
   groovyVersion = '2.4.4'
   jjschemaVersion = '1.10'
   mapstructVersion = '1.2.0.Final'
-  sharedVersion = '1.0.6'
+  sharedVersion = '1.0.7'
   userVersion = '1.2.1'
   companyVersion = '1.2.2'
   commentVersion = '1.2.2'
