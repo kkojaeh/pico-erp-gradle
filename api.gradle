@@ -12,7 +12,7 @@ ext {
   xceliteVersion = '1.0.4'
   mapstructVersion = '1.2.0.Final'
   sharedVersion = '1.0.7'
-  userVersion = '1.2.1'
+  userVersion = '1.2.2'
   companyVersion = '1.2.3'
   commentVersion = '1.2.2'
   auditVersion = '1.1.0'
