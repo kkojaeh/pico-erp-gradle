@@ -17,7 +17,7 @@ ext {
   companyVersion = '1.2.3'
   commentVersion = '1.2.2'
   auditVersion = '1.1.0'
-  itemVersion = '1.2.6'
+  itemVersion = '1.2.8'
   workScheduleVersion = '1.2.2'
   processVersion = '1.2.3'
   projectVersion = '1.2.4'
@@ -25,7 +25,7 @@ ext {
   bomVersion = '1.2.2'
   quotationVersion = '1.2.5'
   orderAcceptanceVersion = '1.2.3'
-  facilityVersion = '1.2.2'
+  facilityVersion = '1.2.3'
   warehouseVersion = '1.2.9'
 }
 ext['hibernate.version'] = '5.2.12.Final'
