@@ -18,7 +18,7 @@ ext {
   auditVersion = '1.1.0'
   itemVersion = '1.2.8'
   workScheduleVersion = '1.2.3'
-  processVersion = '1.2.5'
+  processVersion = '1.2.6'
   projectVersion = '1.2.6'
   attachmentVersion = '1.2.3'
   bomVersion = '1.2.3'
