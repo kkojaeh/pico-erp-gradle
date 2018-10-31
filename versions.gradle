@@ -17,7 +17,7 @@ ext['jackson.version'] = '2.9.7'
 
 ext {
   sharedVersion = '1.0.7'
-  userVersion = '1.2.3'
+  userVersion = '1.2.4'
   companyVersion = '1.2.5'
   commentVersion = '1.2.2'
   auditVersion = '1.1.0'
