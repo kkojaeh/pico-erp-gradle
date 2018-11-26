@@ -16,7 +16,7 @@ ext['hibernate.version'] = '5.2.12.Final'
 ext['jackson.version'] = '2.9.7'
 
 ext {
-  sharedVersion = '1.0.7'
+  sharedVersion = '1.0.8'
   userVersion = '1.2.4'
   companyVersion = '1.2.5'
   commentVersion = '1.2.2'
