@@ -31,6 +31,6 @@ ext {
   orderAcceptanceVersion = '1.2.4'
   facilityVersion = '1.2.4'
   warehouseVersion = '1.2.24'
-  productionPlanVersion = '0.0.1'
+  productionPlanVersion = '0.0.2'
   productionRequestVersion = '0.0.1'
 }
