@@ -22,7 +22,7 @@ ext {
   commentVersion = '0.0.1'
   auditVersion = '0.0.1'
   itemVersion = '0.0.1'
-  workScheduleVersion = '1.2.3'
+  workScheduleVersion = '0.0.1'
   processVersion = '0.0.1'
   projectVersion = '1.2.6'
   attachmentVersion = '1.2.3'
