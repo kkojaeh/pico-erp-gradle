@@ -1,1 +1,1 @@
-// nothting
+apply from: 'https://github.com/kkojaeh/pico-erp-gradle/raw/master/versions.gradle'
