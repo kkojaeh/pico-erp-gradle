@@ -20,7 +20,7 @@ ext {
   auditVersion = '0.0.2'
   userVersion = '0.0.3'
   commentVersion = '0.0.2'
-  companyVersion = '0.0.2'
+  companyVersion = '0.0.3'
   attachmentVersion = '0.0.2'
   itemVersion = '0.0.2'
   workScheduleVersion = '0.0.2'
