@@ -20,11 +20,12 @@ ext {
   auditVersion = '0.1.0'
   commentVersion = '0.1.0'
   userVersion = '0.1.0'
+  workScheduleVersion = '0.1.0'
   companyVersion = '0.1.0'
   attachmentVersion = '0.1.1'
   processVersion = '0.1.5'
   itemVersion = '0.1.0'
-  workScheduleVersion = '0.0.2'
+
   projectVersion = '0.0.2'
   bomVersion = '0.1.2'
   quotationVersion = '0.0.6'
