@@ -32,7 +32,6 @@ ext {
   facilityVersion = '0.1.0'
   warehouseVersion = '0.1.0'
   productionPlanVersion = '0.1.0'
-
   productionRequestVersion = '0.0.1'// 아이템 데이터 추가후 배포
-  purchaseRequestVersion = '0.0.1'
+  purchaseRequestVersion = '0.0.2'
 }
