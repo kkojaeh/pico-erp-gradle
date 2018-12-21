@@ -28,8 +28,8 @@ ext {
   projectVersion = '0.1.0'
   bomVersion = '0.1.3'
   quotationVersion = '0.1.0'
+  orderAcceptanceVersion = '0.1.0'
 
-  orderAcceptanceVersion = '0.0.3'
   facilityVersion = '0.0.2'
   warehouseVersion = '0.0.3'
   productionPlanVersion = '0.0.4'
