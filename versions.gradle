@@ -30,8 +30,8 @@ ext {
   quotationVersion = '0.1.0'
   orderAcceptanceVersion = '0.1.0'
   facilityVersion = '0.1.0'
+  warehouseVersion = '0.1.0'
 
-  warehouseVersion = '0.0.3'
   productionPlanVersion = '0.0.4'
   productionRequestVersion = '0.0.1'// 아이템 데이터 추가후 배포
   purchaseRequestVersion = '0.0.1'
