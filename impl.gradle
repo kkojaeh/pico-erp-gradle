@@ -130,3 +130,16 @@ task sourcesJar(type: Jar) {
 artifacts {
   archives sourcesJar
 }
+
+processResources << {
+  copy {
+    from sourceSets.main.resources
+    into sourceSets.main.output.resourcesDir
+    include "**/*.txt"
+    expand(
+      "application": [
+        "version": project.property("version")
+      ]
+    )
+  }
+}
