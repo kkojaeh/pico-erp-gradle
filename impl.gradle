@@ -136,10 +136,8 @@ processResources << {
     from sourceSets.main.resources
     into sourceSets.main.output.resourcesDir
     include "**/*.txt"
-    expand(
-      "application": [
-        "version": project.property("version")
-      ]
-    )
+    filter ReplaceTokens, beginToken : '${', endToken : '}', tokens: [
+      "application.version": project.property("version")
+    ]
   }
 }
