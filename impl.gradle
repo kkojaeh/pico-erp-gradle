@@ -131,6 +131,8 @@ artifacts {
   archives sourcesJar
 }
 
+import org.apache.tools.ant.filters.*
+
 processResources << {
   copy {
     from sourceSets.main.resources
