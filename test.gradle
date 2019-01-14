@@ -74,7 +74,3 @@ task sourcesJar(type: Jar) {
 artifacts {
   archives sourcesJar
 }
-
-jar {
-  archivesBaseName = "${project.group}-${project.name}"
-}
