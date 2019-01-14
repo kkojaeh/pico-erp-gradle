@@ -133,7 +133,7 @@ artifacts {
 
 import org.apache.tools.ant.filters.*
 
-processResources << {
+processResources.doLast {
   copy {
     from sourceSets.main.resources
     into sourceSets.main.output.resourcesDir
