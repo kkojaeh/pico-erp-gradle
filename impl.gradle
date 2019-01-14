@@ -143,3 +143,7 @@ processResources << {
     ]
   }
 }
+
+jar {
+  archivesBaseName = "${project.group}-${project.name}"
+}
