@@ -30,7 +30,7 @@ ext {
   bomVersion = '0.1.6'
   quotationVersion = '0.1.5'
   orderAcceptanceVersion = '0.1.2'
-  facilityVersion = '0.1.1'
+  facilityVersion = '0.1.2'
   warehouseVersion = '0.1.5'
   invoiceVersion = '0.0.10'
   productionPlanVersion = '0.1.1'
