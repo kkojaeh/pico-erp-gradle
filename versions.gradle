@@ -38,4 +38,5 @@ ext {
   purchaseRequestVersion = '0.0.24'
   purchaseOrderVersion = '0.0.20'
   purchaseInvoiceVersion = '0.0.9'
+  productSpecificationVersion = '0.0.1'
 }
