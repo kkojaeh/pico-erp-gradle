@@ -23,7 +23,7 @@ ext {
   notifyVersion = '0.0.7'
   workScheduleVersion = '0.1.2'
   companyVersion = '0.1.7'
-  attachmentVersion = '0.1.1'
+  attachmentVersion = '0.1.2'
   processVersion = '0.3.6'
   itemVersion = '0.1.7'
   projectVersion = '0.1.2'
