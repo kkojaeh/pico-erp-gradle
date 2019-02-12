@@ -19,7 +19,7 @@ ext {
   sharedVersion = '0.1.4'
   auditVersion = '0.1.0'
   commentVersion = '0.1.1'
-  userVersion = '0.1.4'
+  userVersion = '0.1.5'
   notifyVersion = '0.0.7'
   workScheduleVersion = '0.1.2'
   companyVersion = '0.1.7'
