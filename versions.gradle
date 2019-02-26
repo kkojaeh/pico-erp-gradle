@@ -37,7 +37,7 @@ ext {
   productionRequestVersion = '0.0.21'
   purchaseRequestVersion = '0.1.4'
   purchaseOrderVersion = '0.1.7'
-  purchaseInvoiceVersion = '0.0.11'
+  purchaseInvoiceVersion = '0.0.12'
   productSpecificationVersion = '0.0.8'
   outsourcingRequestVersion = '0.0.4'
   outsourcingOrderVersion = '0.0.4'
