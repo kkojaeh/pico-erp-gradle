@@ -47,5 +47,5 @@ ext {
   faxVersion = '0.0.10'
   deliveryVersion = '0.0.12'
   productionOrderVersion = '0.0.7'
-  productionExecutionVersion = '0.0.1'
+  productionExecutionVersion = '0.0.2'
 }
