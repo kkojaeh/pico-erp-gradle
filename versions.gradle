@@ -46,7 +46,7 @@ ext {
   documentVersion = '0.0.22'
   faxVersion = '0.0.10'
   deliveryVersion = '0.0.12'
-  productionOrderVersion = '0.0.7'
+  productionOrderVersion = '0.0.8'
   productionExecutionVersion = '0.0.2'
   productionMediatorVersion = '0.0.2'
 }
