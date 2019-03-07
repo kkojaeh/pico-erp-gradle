@@ -48,5 +48,5 @@ ext {
   deliveryVersion = '0.0.12'
   productionOrderVersion = '0.0.13'
   productionExecutionVersion = '0.0.3'
-  productionMediatorVersion = '0.0.5'
+  productionMediatorVersion = '0.0.6'
 }
