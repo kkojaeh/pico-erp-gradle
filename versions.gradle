@@ -44,7 +44,7 @@ ext {
   outsourcingInvoiceVersion = '0.0.4'
   outsourcedInvoiceVersion = '0.0.7'
   documentVersion = '0.0.22'
-  faxVersion = '0.0.10'
+  faxVersion = '0.0.11'
   deliveryVersion = '0.0.12'
   productionOrderVersion = '0.0.12'
   productionExecutionVersion = '0.0.2'
