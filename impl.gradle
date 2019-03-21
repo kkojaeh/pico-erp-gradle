@@ -53,6 +53,8 @@ compileTestGroovy {
 
 dependencies {
 
+  compile("com.github.kkojaeh.spring-boot-component:0.0.2")
+
   // 소스코드 간편화
   annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
   testCompileOnly("org.projectlombok:lombok:${lombokVersion}")
