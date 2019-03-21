@@ -19,5 +19,6 @@ rootProject.buildscript.dependencies {
   classpath("io.spring.gradle:dependency-management-plugin:1.0.6.RELEASE")
   classpath("net.researchgate:gradle-release:2.6.0")
   classpath("gradle.plugin.io.github.divinespear:jpa-schema-gradle-plugin:0.3.5.1")
+  classpath("io.freefair.gradle:lombok-plugin:3.1.4")
 
 }
