@@ -62,7 +62,6 @@ dependencies {
 dependencyManagement {
   imports {
     mavenBom "com.amazonaws:aws-java-sdk-bom:${awsJavaSdkBomVersion}"
-    mavenBom "io.spring.platform:platform-bom:${platformBomVersion}"
   }
 }
 
