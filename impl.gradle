@@ -94,9 +94,11 @@ dependencies {
   }
   testCompile("org.spockframework:spock-core:${spockVersion}") {
     exclude module: 'groovy-all'
+    exclude module: 'junit'
   }
   testCompile("org.spockframework:spock-spring:${spockVersion}") {
     exclude module: 'groovy-all'
+    exclude module: 'junit'
   }
   testCompile("org.codehaus.groovy:groovy-all:${groovyVersion}")
   testCompile("org.hamcrest:hamcrest-core:1.3")
