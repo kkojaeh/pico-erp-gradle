@@ -22,7 +22,7 @@ compileJava {
   ]
   aptOptions.annotationProcessing = true
   aptOptions.processors = [
-    //'lombok.launch.AnnotationProcessorHider$AnnotationProcessor',
+    'lombok.launch.AnnotationProcessorHider$AnnotationProcessor',
     'com.querydsl.apt.jpa.JPAAnnotationProcessor']
 }
 
@@ -31,25 +31,37 @@ compileTestJava {
   ]
   aptOptions.annotationProcessing = true
   aptOptions.processors = [
-    //'lombok.launch.AnnotationProcessorHider$AnnotationProcessor',
+    'lombok.launch.AnnotationProcessorHider$AnnotationProcessor',
     'com.querydsl.apt.jpa.JPAAnnotationProcessor']
 }
 
 dependencies {
+
+  // 소스코드 간편화
+  annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
+  testCompileOnly("org.projectlombok:lombok:${lombokVersion}")
+  compileOnly("org.projectlombok:lombok:${lombokVersion}")
 
   // JPA
   annotationProcessor('javax.persistence:javax.persistence-api:2.2')
   compile('javax.persistence:javax.persistence-api:2.2')
 
   // QueryDSL
-  annotationProcessor('com.querydsl:querydsl-apt:4.2.1')
-  compileOnly("com.querydsl:querydsl-apt:4.2.1")
-  testCompileOnly("com.querydsl:querydsl-apt:4.2.1")
+  annotationProcessor('com.querydsl:querydsl-apt')
+  compileOnly("com.querydsl:querydsl-apt")
+  testCompileOnly("com.querydsl:querydsl-apt")
 
   annotationProcessor('javax.annotation:javax.annotation-api:1.3.2')
   testCompileOnly('javax.annotation:javax.annotation-api:1.3.2')
   compileOnly('javax.annotation:javax.annotation-api:1.3.2')
 
+}
+
+dependencyManagement {
+  imports {
+    mavenBom "com.amazonaws:aws-java-sdk-bom:${awsJavaSdkBomVersion}"
+    mavenBom "io.spring.platform:platform-bom:${platformBomVersion}"
+  }
 }
 
 task sourcesJar(type: Jar) {
@@ -59,12 +71,4 @@ task sourcesJar(type: Jar) {
 
 artifacts {
   archives sourcesJar
-}
-
-bootJar {
-  enabled = false
-}
-
-jar {
-  enabled = true
 }

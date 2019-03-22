@@ -54,10 +54,9 @@ compileTestGroovy {
 dependencies {
 
   // 소스코드 간편화
-
-  /*annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
+  annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
   testCompileOnly("org.projectlombok:lombok:${lombokVersion}")
-  compileOnly("org.projectlombok:lombok:${lombokVersion}")*/
+  compileOnly("org.projectlombok:lombok:${lombokVersion}")
 
   // JPA
   annotationProcessor('javax.persistence:javax.persistence-api:2.2')
@@ -119,6 +118,7 @@ generateSchema {
 dependencyManagement {
   imports {
     mavenBom "com.amazonaws:aws-java-sdk-bom:${awsJavaSdkBomVersion}"
+    mavenBom "io.spring.platform:platform-bom:${platformBomVersion}"
   }
 }
 

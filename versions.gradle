@@ -1,4 +1,5 @@
 ext {
+  platformBomVersion = 'Brussels-SR6'
   awsJavaSdkBomVersion = '1.11.331'
   lombokVersion = '1.18.2'
   spockVersion = '1.1-groovy-2.4'
