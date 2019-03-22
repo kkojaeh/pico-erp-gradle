@@ -1,1 +1,1 @@
-apply from: 'https://github.com/kkojaeh/pico-erp-gradle/raw/master/versions.gradle'
+apply from: 'https://github.com/kkojaeh/pico-erp-gradle/raw/spring-boot-2/versions.gradle'
