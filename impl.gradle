@@ -55,9 +55,8 @@ dependencies {
 
   // 소스코드 간편화
 
-  /*annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
-  testCompileOnly("org.projectlombok:lombok:${lombokVersion}")
-  compileOnly("org.projectlombok:lombok:${lombokVersion}")*/
+  compileOnly('org.projectlombok:lombok:1.18.6')
+  annotationProcessor('org.projectlombok:lombok:1.18.6')
 
   // JPA
   annotationProcessor('javax.persistence:javax.persistence-api:2.2')

@@ -1,12 +1,5 @@
 apply from: 'https://github.com/kkojaeh/pico-erp-gradle/raw/spring-boot-2/versions.gradle'
 
-plugins {
-  id 'java'
-  id 'groovy'
-  id "net.ltgt.apt"
-  id 'org.springframework.boot'
-  id 'io.freefair.lombok'
-}
 apply plugin: 'io.spring.dependency-management'
 
 sourceCompatibility = 1.8
@@ -43,6 +36,9 @@ compileTestJava {
 }
 
 dependencies {
+
+  compileOnly('org.projectlombok:lombok:1.18.6')
+  annotationProcessor('org.projectlombok:lombok:1.18.6')
 
   // JPA
   annotationProcessor('javax.persistence:javax.persistence-api:2.2')
