@@ -73,3 +73,11 @@ task sourcesJar(type: Jar) {
 artifacts {
   archives sourcesJar
 }
+
+bootJar {
+  enabled = false
+}
+
+jar {
+  enabled = true
+}
