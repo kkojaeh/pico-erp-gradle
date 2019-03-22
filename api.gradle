@@ -1,5 +1,7 @@
 apply from: 'https://github.com/kkojaeh/pico-erp-gradle/raw/master/versions.gradle'
 
+apply plugin: 'io.spring.dependency-management'
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -20,7 +22,7 @@ compileJava {
   ]
   aptOptions.annotationProcessing = true
   aptOptions.processors = [
-    'lombok.launch.AnnotationProcessorHider$AnnotationProcessor',
+    //'lombok.launch.AnnotationProcessorHider$AnnotationProcessor',
     'com.querydsl.apt.jpa.JPAAnnotationProcessor']
 }
 
@@ -29,7 +31,7 @@ compileTestJava {
   ]
   aptOptions.annotationProcessing = true
   aptOptions.processors = [
-    'lombok.launch.AnnotationProcessorHider$AnnotationProcessor',
+    //'lombok.launch.AnnotationProcessorHider$AnnotationProcessor',
     'com.querydsl.apt.jpa.JPAAnnotationProcessor']
 }
 
@@ -57,4 +59,12 @@ task sourcesJar(type: Jar) {
 
 artifacts {
   archives sourcesJar
+}
+
+bootJar {
+  enabled = false
+}
+
+jar {
+  enabled = true
 }

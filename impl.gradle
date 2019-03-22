@@ -53,12 +53,11 @@ compileTestGroovy {
 
 dependencies {
 
-  compile("com.github.kkojaeh:spring-boot-component:0.0.3")
-
   // 소스코드 간편화
-  annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
+
+  /*annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
   testCompileOnly("org.projectlombok:lombok:${lombokVersion}")
-  compileOnly("org.projectlombok:lombok:${lombokVersion}")
+  compileOnly("org.projectlombok:lombok:${lombokVersion}")*/
 
   // JPA
   annotationProcessor('javax.persistence:javax.persistence-api:2.2')
