@@ -15,9 +15,9 @@ ext['hibernate.version'] = '5.2.12.Final'
 ext['jackson.version'] = '2.9.7'
 
 ext {
-  sharedVersion = '0.2.7'
+  sharedVersion = '0.2.8'
   auditVersion = '0.1.0'
-  commentVersion = '0.1.2'
+  commentVersion = '0.1.2' // component
   userVersion = '0.1.7'
   notifyVersion = '0.0.8'
   workScheduleVersion = '0.1.3'
