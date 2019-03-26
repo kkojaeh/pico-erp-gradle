@@ -17,6 +17,12 @@ repositories {
   }
 }
 
+dependencyManagement {
+  imports {
+    mavenBom "com.amazonaws:aws-java-sdk-bom:${awsJavaSdkBomVersion}"
+  }
+}
+
 compileJava {
   options.compilerArgs = [
   ]
