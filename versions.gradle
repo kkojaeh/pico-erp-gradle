@@ -37,7 +37,7 @@ ext {
   documentVersion = 'spring-boot-2-SNAPSHOT' //'0.0.24'
   faxVersion = 'spring-boot-2-SNAPSHOT' //'0.0.13'
   deliveryVersion = 'spring-boot-2-SNAPSHOT' //'0.0.13'
-  productSpecificationVersion = '0.0.11'
+  productSpecificationVersion = 'spring-boot-2-SNAPSHOT' //'0.0.11'
   productionPlanVersion = 'spring-boot-2-SNAPSHOT' //'0.1.32'
   productionRequestVersion = '0.0.25'
   purchaseRequestVersion = '0.1.11'
