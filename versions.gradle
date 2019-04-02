@@ -17,7 +17,7 @@ ext['jackson.version'] = '2.9.7'
 ext['commons.io.version'] = '2.6'
 
 ext {
-  sharedVersion = '0.2.14'
+  sharedVersion = '0.2.16'
   auditVersion = '0.1.0'
   commentVersion = 'spring-boot-2-SNAPSHOT'// '0.1.2'
   userVersion = 'spring-boot-2-SNAPSHOT'//'0.1.7'
