@@ -17,8 +17,7 @@ ext['jackson.version'] = '2.9.7'
 ext['commons.io.version'] = '2.6'
 
 ext {
-  sharedVersion = '0.2.17'
-  auditVersion = '0.1.0'
+  sharedVersion = '2.0.0'
   commentVersion = '2.0.0'
   userVersion = '2.0.0'
   notifyVersion = '2.0.0'
