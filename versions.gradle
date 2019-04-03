@@ -24,7 +24,7 @@ ext {
   workScheduleVersion = '2.1.0'
   companyVersion = '2.1.0'
   attachmentVersion = '2.1.0'
-  itemVersion = 'spring-boot-2-SNAPSHOT' //'0.1.13'
+  itemVersion = '2.1.0'
   processVersion = 'spring-boot-2-SNAPSHOT' //'0.3.12'
   projectVersion = 'spring-boot-2-SNAPSHOT' //'0.1.3'
   bomVersion = 'spring-boot-2-SNAPSHOT' //'0.2.3'
