@@ -22,7 +22,7 @@ ext {
   userVersion = '2.1.0'
   notifyVersion = '2.1.0'
   workScheduleVersion = '2.1.0'
-  companyVersion = 'spring-boot-2-SNAPSHOT' //'0.1.10'
+  companyVersion = '2.1.0'
   attachmentVersion = 'spring-boot-2-SNAPSHOT' //'0.1.6'
   itemVersion = 'spring-boot-2-SNAPSHOT' //'0.1.13'
   processVersion = 'spring-boot-2-SNAPSHOT' //'0.3.12'
