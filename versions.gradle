@@ -42,7 +42,7 @@ ext {
   purchaseRequestVersion = '2.1.0'
   purchaseOrderVersion = '2.1.0'
   purchaseInvoiceVersion = '2.1.0'
-  outsourcingRequestVersion = 'spring-boot-2-SNAPSHOT' //'0.0.15'
+  outsourcingRequestVersion = '2.1.0'
   outsourcingOrderVersion = 'spring-boot-2-SNAPSHOT' //'0.0.17'
   outsourcingInvoiceVersion = 'spring-boot-2-SNAPSHOT' //'0.0.5'
   outsourcedInvoiceVersion = 'spring-boot-2-SNAPSHOT' //'0.0.8'
