@@ -26,7 +26,7 @@ ext {
   attachmentVersion = '2.1.0'
   itemVersion = '2.1.0'
   processVersion = '2.1.0'
-  projectVersion = 'spring-boot-2-SNAPSHOT' //'0.1.3'
+  projectVersion = '2.1.0'
   bomVersion = 'spring-boot-2-SNAPSHOT' //'0.2.3'
   quotationVersion = 'spring-boot-2-SNAPSHOT' //'0.1.10'
   orderAcceptanceVersion = 'spring-boot-2-SNAPSHOT' //'0.1.4'
