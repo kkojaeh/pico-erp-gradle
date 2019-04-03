@@ -32,7 +32,7 @@ ext {
   orderAcceptanceVersion = '2.1.0'
   facilityVersion = '2.1.0'
   warehouseVersion = '2.1.0'
-  invoiceVersion = 'spring-boot-2-SNAPSHOT' //'0.1.3'
+  invoiceVersion = '2.1.0'
   documentVersion = 'spring-boot-2-SNAPSHOT' //'0.0.24'
   faxVersion = 'spring-boot-2-SNAPSHOT' //'0.0.13'
   deliveryVersion = 'spring-boot-2-SNAPSHOT' //'0.0.13'
