@@ -48,5 +48,5 @@ ext {
   outsourcedInvoiceVersion = '2.1.0'
   productionOrderVersion = '2.1.0'
   productionExecutionVersion = '2.1.0'
-  productionMediatorVersion = 'spring-boot-2-SNAPSHOT' //'0.0.9'
+  productionMediatorVersion = '2.1.0'
 }
