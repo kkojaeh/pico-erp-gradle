@@ -18,8 +18,8 @@ ext['commons.io.version'] = '2.6'
 
 ext {
   sharedVersion = '2.0.2'
-  commentVersion = '2.1.0'
-  userVersion = '2.1.0'
+  commentVersion = '2.1.1'
+  userVersion = '2.1.1'
   notifyVersion = '2.1.0'
   workScheduleVersion = '2.1.0'
   companyVersion = '2.1.0'
