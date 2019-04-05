@@ -21,7 +21,7 @@ ext {
   commentVersion = '2.1.1'
   userVersion = '2.1.1'
   notifyVersion = '2.1.1'
-  workScheduleVersion = '2.1.0'
+  workScheduleVersion = '2.1.1'
   companyVersion = '2.1.0'
   attachmentVersion = '2.1.0'
   itemVersion = '2.1.0'
