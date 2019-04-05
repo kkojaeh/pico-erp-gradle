@@ -32,7 +32,7 @@ ext {
   orderAcceptanceVersion = '2.1.1'
   facilityVersion = '2.1.1'
   warehouseVersion = '2.1.1'
-  invoiceVersion = '2.1.1'
+  invoiceVersion = '2.1.2'
   documentVersion = '2.1.1'
   faxVersion = '2.1.1'
   deliveryVersion = '2.1.1'
