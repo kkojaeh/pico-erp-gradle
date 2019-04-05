@@ -47,6 +47,6 @@ ext {
   outsourcingInvoiceVersion = '2.1.1'
   outsourcedInvoiceVersion = '2.1.1'
   productionOrderVersion = '2.1.1'
-  productionExecutionVersion = '2.1.0'
+  productionExecutionVersion = '2.1.1'
   productionMediatorVersion = '2.1.0'
 }
