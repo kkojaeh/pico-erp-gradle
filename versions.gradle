@@ -36,7 +36,7 @@ ext {
   documentVersion = '2.1.1'
   faxVersion = '2.1.1'
   deliveryVersion = '2.1.1'
-  productSpecificationVersion = '2.1.0'
+  productSpecificationVersion = '2.1.1'
   productionPlanVersion = '2.1.0'
   productionRequestVersion = '2.1.0'
   purchaseRequestVersion = '2.1.0'
