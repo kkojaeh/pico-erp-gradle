@@ -18,7 +18,7 @@ ext['commons.io.version'] = '2.6'
 
 ext {
   sharedVersion = '2.0.2'
-  commentVersion = '2.1.1'
+  commentVersion = '2.1.2'
   userVersion = '2.1.1'
   notifyVersion = '2.1.1'
   workScheduleVersion = '2.1.1'
@@ -37,7 +37,7 @@ ext {
   faxVersion = '2.1.1'
   deliveryVersion = '2.1.1'
   productSpecificationVersion = '2.1.1'
-  productionPlanVersion = '2.1.2'
+  productionPlanVersion = '2.1.3'
   productionRequestVersion = '2.1.1'
   purchaseRequestVersion = '2.1.1'
   purchaseOrderVersion = '2.1.1'
